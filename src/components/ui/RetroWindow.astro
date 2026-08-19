@@ -1,0 +1,66 @@
+---
+import RetroIcon from '~/components/ui/RetroIcon.astro';
+import { isSerenityIcon, type SerenityIconName } from '~/assets/icons/serenity';
+
+export interface Props {
+  title: string;
+  /** Serenity icon key (preferred) or legacy emoji/text glyph */
+  icon?: SerenityIconName | string;
+  class?: string;
+  clientClass?: string;
+  showControls?: boolean;
+  inactive?: boolean;
+  /** When true, client area keeps face color (menus / toolbars) */
+  flush?: boolean;
+  id?: string;
+}
+
+const {
+  title,
+  icon = 'app-browser',
+  class: className = '',
+  clientClass = 'p-4 md:p-6',
+  showControls = true,
+  inactive = false,
+  flush = false,
+  id,
+} = Astro.props;
+
+const hasStatusbar = Astro.slots.has('statusbar');
+const usePixelIcon = typeof icon === 'string' && isSerenityIcon(icon);
+---
+
+<div class:list={['retro-window', className]} id={id}>
+  <div class:list={['retro-title-bar', { 'retro-title-bar--inactive': inactive }]}>
+    <span class="retro-title-bar__icon" aria-hidden="true">
+      {usePixelIcon ? <RetroIcon name={icon} width={14} height={14} /> : icon}
+    </span>
+    <span class="retro-title-bar__text">{title}</span>
+    <span class="retro-title-bar__stripes" aria-hidden="true"></span>
+    {
+      showControls && (
+        <div class="retro-title-bar__controls" aria-hidden="true">
+          <span class="retro-title-btn">
+            <span class="retro-title-btn__glyph retro-title-btn__glyph--min" />
+          </span>
+          <span class="retro-title-btn">
+            <span class="retro-title-btn__glyph retro-title-btn__glyph--max" />
+          </span>
+          <span class="retro-title-btn">
+            <span class="retro-title-btn__glyph retro-title-btn__glyph--close" />
+          </span>
+        </div>
+      )
+    }
+  </div>
+  <div class:list={['retro-client', clientClass, { 'retro-client--flush': flush }]}>
+    <slot />
+  </div>
+  {
+    hasStatusbar && (
+      <div class="retro-window__statusbar">
+        <slot name="statusbar" />
+      </div>
+    )
+  }
+</div>

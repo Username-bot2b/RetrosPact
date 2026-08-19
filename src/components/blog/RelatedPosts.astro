@@ -1,0 +1,35 @@
+---
+import { APP_BLOG } from '~/config';
+
+import { getRelatedPosts } from '~/utils/blog';
+import type { Post } from '~/types';
+import { getBlogPermalink } from '~/utils/permalinks';
+import RetroWindow from '~/components/ui/RetroWindow.astro';
+import List from '~/components/blog/List.astro';
+
+export interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+
+const relatedPosts = post.tags ? await getRelatedPosts(post, 4) : [];
+---
+
+{
+  APP_BLOG.isRelatedPostsEnabled && relatedPosts.length > 0 ? (
+    <section class="bg-retro py-3 md:py-4">
+      <div class="max-w-5xl mx-auto px-4">
+        <RetroWindow title="Related Posts" icon="book-open">
+          <h2 class="retro-h2">You might also like</h2>
+          <List posts={relatedPosts} />
+          <div class="mt-3">
+            <a href={getBlogPermalink()} class="btn-retro">
+              View all posts
+            </a>
+          </div>
+        </RetroWindow>
+      </div>
+    </section>
+  ) : null
+}

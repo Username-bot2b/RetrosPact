@@ -1,0 +1,57 @@
+---
+// SerenityOS-inspired system UI fonts are set via CSS variables below.
+---
+
+<style is:inline>
+  :root {
+    --aw-font-sans: Tahoma, Verdana, 'Segoe UI', Geneva, 'Liberation Sans', sans-serif;
+    --aw-font-serif: Tahoma, Verdana, 'Segoe UI', Geneva, 'Liberation Sans', sans-serif;
+    --aw-font-heading: Tahoma, Verdana, 'Segoe UI', Geneva, 'Liberation Sans', sans-serif;
+
+    /* SerenityOS Default.ini accents */
+    --aw-color-primary: #84351a;
+    --aw-color-secondary: #6e2209;
+    --aw-color-accent: #ab6e4a;
+
+    --aw-color-text-heading: #000000;
+    --aw-color-text-default: #000000;
+    --aw-color-text-muted: rgb(0 0 0 / 66%);
+    --aw-color-bg-page: #505050;
+
+    --aw-color-bg-page-dark: #404040;
+
+    ::selection {
+      background-color: #84351a;
+      color: #ffffff;
+    }
+  }
+
+  .dark {
+    --aw-font-sans: Tahoma, Verdana, 'Segoe UI', Geneva, 'Liberation Sans', sans-serif;
+    --aw-font-serif: Tahoma, Verdana, 'Segoe UI', Geneva, 'Liberation Sans', sans-serif;
+    --aw-font-heading: Tahoma, Verdana, 'Segoe UI', Geneva, 'Liberation Sans', sans-serif;
+
+    --aw-color-primary: #84351a;
+    --aw-color-secondary: #6e2209;
+    --aw-color-accent: #ab6e4a;
+
+    --aw-color-text-heading: #000000;
+    --aw-color-text-default: #000000;
+    --aw-color-text-muted: rgb(0 0 0 / 66%);
+    --aw-color-bg-page: #505050;
+
+    ::selection {
+      background-color: #84351a;
+      color: #ffffff;
+    }
+  }
+
+  html {
+    font-family: var(--aw-font-sans);
+    font-size: 13px;
+    line-height: 1.35;
+    letter-spacing: 0;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: unset;
+  }
+</style>

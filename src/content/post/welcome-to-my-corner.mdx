@@ -1,0 +1,165 @@
+---
+publishDate: 2026-03-01T00:00:00Z
+author: RetrosPact
+title: Welcome to my corner of the web
+excerpt: A short hello from a personal site built with Astro and a SerenityOS-inspired interface — plus a typography and MDX preview.
+image: ~/assets/images/welcome.jpg
+category: Notes
+tags:
+  - personal
+  - intro
+  - typography
+  - mdx
+---
+
+import Logo from '~/components/Logo.astro';
+import DListItem from '~/components/ui/DListItem.astro';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+
+This site is a small personal space — notes, experiments, and whatever I am learning.
+
+The UI borrows from classic desktop aesthetics (in the spirit of SerenityOS): windows, title bars, and instant controls instead of glossy marketing pages.
+
+If you are reading this, you found the sample blog. The sections below are a **live style check** for HTML tags and MDX inside the retro theme.
+
+---
+
+## HTML typography preview
+
+The next block uses raw HTML tags (`h1`–`h3`, `p`, `ul`/`ol`/`li`, and friends) so you can judge spacing, weight, and color against `.retro-prose`.
+
+<div>
+  <h1>Heading level 1 (HTML &lt;h1&gt;)</h1>
+  <p>
+    A normal paragraph. This theme uses a classic UI font stack with little to no
+    antialiasing, so body copy should feel closer to a desktop app than a marketing page.
+  </p>
+  <p>
+    Inline styles: <strong>strong</strong>, <em>emphasis</em>, <a href="https://astro.build">a link</a>,
+    and <code>inline code</code>.
+  </p>
+
+  <h2>Heading level 2 (HTML &lt;h2&gt;)</h2>
+  <p>Secondary headings sit under the window title and should stay readable at 12–18px scale.</p>
+
+  <h3>Heading level 3 (HTML &lt;h3&gt;)</h3>
+  <p>Tertiary headings mark smaller sections without competing with the window chrome.</p>
+
+  <h2>Lists</h2>
+  <ul>
+    <li>Unordered item one</li>
+    <li>Unordered item two</li>
+    <li>
+      Nested list:
+      <ul>
+        <li>Child A</li>
+        <li>Child B</li>
+      </ul>
+    </li>
+  </ul>
+
+  <ol>
+    <li>Ordered item one</li>
+    <li>Ordered item two</li>
+    <li>Ordered item three</li>
+  </ol>
+
+  <blockquote>
+    <p>A blockquote for asides and short callouts — italic selection-colored text with a left accent bar.</p>
+  </blockquote>
+
+  <h2>Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Element</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>h1 / h2 / h3</td>
+        <td>Section hierarchy</td>
+      </tr>
+      <tr>
+        <td>p / li</td>
+        <td>Body and list copy</td>
+      </tr>
+      <tr>
+        <td>code / pre</td>
+        <td>Monospace samples</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Code</h2>
+  <pre><code>{`function hello(name) {
+  return \`Hello, \${name}\`;
+}
+
+console.log(hello('RetrosPact'));`}</code></pre>
+
+  <hr />
+  <p>Horizontal rule above this line.</p>
+</div>
+
+## Markdown (still works in MDX)
+
+You can mix Markdown with HTML in the same file:
+
+- **Bold**, _italic_, and a [Markdown link](https://docs.astro.build/en/guides/markdown-content/)
+- Another bullet for spacing checks
+- `inline code` from Markdown
+
+1. First ordered Markdown item
+2. Second ordered Markdown item
+
+> Markdown blockquote — should match the HTML one above.
+
+```ts
+export const theme = 'retropact';
+```
+
+| Feature | Status |
+| ------- | ------ |
+| Markdown | Ready |
+| HTML tags | Ready |
+| MDX components | Below |
+
+## MDX components
+
+MDX lets you import Astro components into a post. Examples:
+
+### Logo component
+
+Site name from config, rendered via `<Logo />`:
+
+<p>
+  <Logo />
+</p>
+
+### Description list helper
+
+<DListItem dt="Window">
+  Classic title bar with min / max / close affordances.
+</DListItem>
+
+<DListItem dt="Prose">
+  Typography lives in <code>.retro-prose</code> — headings, lists, tables, and code blocks.
+</DListItem>
+
+<DListItem dt="MDX">
+  Same collection as Markdown posts; add JSX / components when you need interactivity or reuse.
+</DListItem>
+
+### Interactive control
+
+Theme toggle embedded from a shared component (click to flip light / dark if enabled):
+
+<p>
+  <ToggleTheme />
+</p>
+
+---
+
+Replace this sample with your own writing when you are ready — keep the HTML / MDX sections only while you are tuning styles.

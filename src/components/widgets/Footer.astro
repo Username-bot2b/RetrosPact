@@ -1,0 +1,41 @@
+---
+import { SITE } from '~/config';
+import RetroWindow from '~/components/ui/RetroWindow.astro';
+import RetroStatusBar from '~/components/ui/RetroStatusBar.astro';
+import { getPermalink, getBlogPermalink, getAsset } from '~/utils/permalinks';
+
+export interface Props {
+  theme?: string;
+  links?: unknown;
+  secondaryLinks?: unknown;
+  socialLinks?: unknown;
+  footNote?: string;
+}
+
+const currentYear = new Date().getFullYear();
+const siteName = SITE?.name || 'RetrosPact';
+---
+
+<footer class="bg-retro mt-0 px-4 pb-3 pt-1">
+  <div class="max-w-5xl mx-auto">
+    <RetroWindow title="Status" icon="app-system-monitor" inactive flush clientClass="p-0">
+      <RetroStatusBar label="Site status">
+        <div class="retro-statusbar__pane retro-statusbar__pane--grow">
+          <span>© {currentYear} {siteName}</span>
+        </div>
+        <div class="retro-statusbar__pane">
+          <a href={getPermalink('/about')}>About</a>
+          <span class="retro-statusbar__sep" aria-hidden="true">·</span>
+          <a href={getBlogPermalink()}>Blog</a>
+          <span class="retro-statusbar__sep" aria-hidden="true">·</span>
+          <a href={getPermalink('/contact')}>Contact</a>
+        </div>
+        <div class="retro-statusbar__pane">
+          <a href={getPermalink('/privacy')}>Privacy</a>
+          <span class="retro-statusbar__sep" aria-hidden="true">·</span>
+          <a href={getAsset('/rss.xml')}>RSS</a>
+        </div>
+      </RetroStatusBar>
+    </RetroWindow>
+  </div>
+</footer>

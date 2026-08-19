@@ -1,0 +1,16 @@
+---
+export interface Props {
+  /** Show the decorative resize grip (default true) */
+  showGripper?: boolean;
+  class?: string;
+  /** Accessible label for the status region */
+  label?: string;
+}
+
+const { showGripper = true, class: className = '', label = 'Status' } = Astro.props;
+---
+
+<div class:list={['retro-statusbar', className]} role="status" aria-label={label}>
+  <slot />
+  {showGripper && <span class="retro-statusbar__gripper" aria-hidden="true" title="Size grip" />}
+</div>

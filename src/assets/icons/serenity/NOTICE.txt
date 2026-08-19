@@ -1,0 +1,27 @@
+SerenityOS icons
+================
+
+These 16×16 PNG icons are copied from the SerenityOS project:
+
+  https://github.com/SerenityOS/serenity
+  Path: Base/res/icons/16x16/
+
+Provenance (approx.):
+  Repository: SerenityOS/serenity
+  Ref:        master
+  Commit:     7c192e69f0d3 (2026-08-19)
+
+License: BSD 2-Clause — see LICENSE in this folder.
+
+Icons included:
+  go-home.png
+  home-directory.png
+  app-welcome.png
+  app-user-settings.png
+  app-text-editor.png
+  app-mail.png
+  app-browser.png
+  app-system-monitor.png
+  app-help.png
+  book-open.png
+  filetype-text.png

@@ -1,0 +1,22 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getBlogPermalink } from '~/utils/permalinks';
+import { I18N } from '~/config';
+
+const { textDirection } = I18N;
+---
+
+<section class="bg-retro py-3 md:py-4">
+  <div class="max-w-5xl mx-auto px-4">
+    <a href={getBlogPermalink()} class="btn-retro inline-flex items-center gap-1">
+      {
+        textDirection === 'rtl' ? (
+          <Icon name="tabler:chevron-right" class="w-4 h-4" />
+        ) : (
+          <Icon name="tabler:chevron-left" class="w-4 h-4" />
+        )
+      }
+      Back to Blog
+    </a>
+  </div>
+</section>

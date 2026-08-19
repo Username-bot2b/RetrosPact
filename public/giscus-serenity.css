@@ -1,0 +1,106 @@
+/*!
+  SerenityOS-inspired Giscus theme for RetrosPact
+  Matches Default.ini-ish palette: face #d4d0c8, selection #84351a, base #fff
+*/
+main {
+  --color-prettylights-syntax-comment: #808080;
+  --color-prettylights-syntax-constant: #6e2209;
+  --color-prettylights-syntax-entity: #84351a;
+  --color-prettylights-syntax-storage-modifier-import: #000000;
+  --color-prettylights-syntax-entity-tag: #654321;
+  --color-prettylights-syntax-keyword: #84351a;
+  --color-prettylights-syntax-string: #6e2209;
+  --color-prettylights-syntax-variable: #ab6e4a;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #82071e;
+  --color-prettylights-syntax-invalid-illegal-text: #ffffff;
+  --color-prettylights-syntax-invalid-illegal-bg: #82071e;
+  --color-prettylights-syntax-carriage-return-text: #ffffff;
+  --color-prettylights-syntax-carriage-return-bg: #84351a;
+  --color-prettylights-syntax-string-regexp: #654321;
+  --color-prettylights-syntax-markup-list: #3b2300;
+  --color-prettylights-syntax-markup-heading: #6e2209;
+  --color-prettylights-syntax-markup-italic: #000000;
+  --color-prettylights-syntax-markup-bold: #000000;
+  --color-prettylights-syntax-markup-deleted-text: #82071e;
+  --color-prettylights-syntax-markup-deleted-bg: #f4e4d4;
+  --color-prettylights-syntax-markup-inserted-text: #654321;
+  --color-prettylights-syntax-markup-inserted-bg: #e8e4dc;
+  --color-prettylights-syntax-markup-changed-text: #84351a;
+  --color-prettylights-syntax-markup-changed-bg: #f4ca9e;
+  --color-prettylights-syntax-markup-ignored-text: #d4d0c8;
+  --color-prettylights-syntax-markup-ignored-bg: #6e2209;
+  --color-prettylights-syntax-meta-diff-range: #ab6e4a;
+  --color-prettylights-syntax-brackethighlighter-angle: #404040;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #808080;
+  --color-prettylights-syntax-constant-other-reference-link: #6e2209;
+
+  --color-btn-text: #000000;
+  --color-btn-bg: #d4d0c8;
+  --color-btn-border: #404040;
+  --color-btn-shadow: none;
+  --color-btn-inset-shadow: inset 1px 1px 0 #ffffff;
+  --color-btn-hover-bg: #e3dfdb;
+  --color-btn-hover-border: #404040;
+  --color-btn-active-bg: #c8c4bc;
+  --color-btn-active-border: #404040;
+  --color-btn-selected-bg: #e3dfdb;
+
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #84351a;
+  --color-btn-primary-border: #000000;
+  --color-btn-primary-shadow: none;
+  --color-btn-primary-inset-shadow: inset 1px 1px 0 #ab6e4a;
+  --color-btn-primary-hover-bg: #ab6e4a;
+  --color-btn-primary-hover-border: #000000;
+  --color-btn-primary-selected-bg: #6e2209;
+  --color-btn-primary-selected-shadow: none;
+  --color-btn-primary-disabled-text: #ffffffcc;
+  --color-btn-primary-disabled-bg: #c4a090;
+  --color-btn-primary-disabled-border: #808080;
+
+  --color-action-list-item-default-hover-bg: #e3dfdb;
+  --color-segmented-control-bg: #d4d0c8;
+  --color-segmented-control-button-bg: #ffffff;
+  --color-segmented-control-button-selected-border: #808080;
+
+  --color-fg-default: #000000;
+  --color-fg-muted: #404040;
+  --color-fg-subtle: #808080;
+
+  --color-canvas-default: #ffffff;
+  --color-canvas-overlay: #ffffff;
+  --color-canvas-inset: #d4d0c8;
+  --color-canvas-subtle: #e3dfdb;
+
+  --color-border-default: #808080;
+  --color-border-muted: #c0c0c0;
+  --color-neutral-muted: #d4d0c866;
+
+  --color-accent-fg: #84351a;
+  --color-accent-emphasis: #84351a;
+  --color-accent-muted: #ab6e4a66;
+  --color-accent-subtle: #f4ca9e55;
+
+  --color-success-fg: #654321;
+  --color-attention-fg: #6e2209;
+  --color-attention-muted: #ab6e4a66;
+  --color-attention-subtle: #f4ca9e66;
+  --color-danger-fg: #82071e;
+  --color-danger-muted: #c0808066;
+  --color-danger-subtle: #f4e4d4;
+
+  --color-primer-shadow-inset: inset 1px 1px 0 #808080;
+  --color-scale-gray-1: #e3dfdb;
+  --color-scale-blue-1: #f4ca9e;
+
+  --color-social-reaction-bg-hover: var(--color-scale-gray-1);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1);
+}
+
+main .pagination-loader-container {
+  background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line.svg);
+}
+
+main .gsc-loading-image {
+  background-image: url(https://github.githubassets.com/images/mona-loading-default.gif);
+}

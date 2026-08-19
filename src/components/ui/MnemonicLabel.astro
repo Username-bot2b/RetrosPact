@@ -1,0 +1,25 @@
+---
+import { splitMnemonic } from '~/utils/mnemonic';
+
+export interface Props {
+  text: string;
+  /** Letter to underline (case-insensitive). Defaults to first letter. */
+  mnemonic?: string;
+}
+
+const { text, mnemonic } = Astro.props;
+const key = (mnemonic ?? text?.charAt(0) ?? '').toLowerCase();
+const parts = splitMnemonic(text ?? '', key);
+---
+
+{
+  parts ? (
+    <>
+      {parts.before}
+      <span class="retro-mnemonic">{parts.mark}</span>
+      {parts.after}
+    </>
+  ) : (
+    text
+  )
+}

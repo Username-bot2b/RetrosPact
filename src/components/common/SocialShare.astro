@@ -1,0 +1,64 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  text: string;
+  url: string | URL;
+  class?: string;
+}
+
+const { text, url, class: className = '' } = Astro.props;
+---
+
+<div class:list={['flex flex-wrap items-center gap-1', className]}>
+  <span class="retro-label mr-1">Share:</span>
+  <button
+    type="button"
+    class="btn-retro !min-h-[23px] !px-2"
+    title="Share on X"
+    data-aw-social-share="twitter"
+    data-aw-url={url}
+    data-aw-text={text}
+  >
+    <Icon name="tabler:brand-x" class="w-4 h-4" />
+  </button>
+  <button
+    type="button"
+    class="btn-retro !min-h-[23px] !px-2"
+    title="Share on Facebook"
+    data-aw-social-share="facebook"
+    data-aw-url={url}
+  >
+    <Icon name="tabler:brand-facebook" class="w-4 h-4" />
+  </button>
+  <button
+    type="button"
+    class="btn-retro !min-h-[23px] !px-2"
+    title="Share on LinkedIn"
+    data-aw-social-share="linkedin"
+    data-aw-url={url}
+    data-aw-text={text}
+  >
+    <Icon name="tabler:brand-linkedin" class="w-4 h-4" />
+  </button>
+  <button
+    type="button"
+    class="btn-retro !min-h-[23px] !px-2"
+    title="Share on WhatsApp"
+    data-aw-social-share="whatsapp"
+    data-aw-url={url}
+    data-aw-text={text}
+  >
+    <Icon name="tabler:brand-whatsapp" class="w-4 h-4" />
+  </button>
+  <button
+    type="button"
+    class="btn-retro !min-h-[23px] !px-2"
+    title="Share by email"
+    data-aw-social-share="mail"
+    data-aw-url={url}
+    data-aw-text={text}
+  >
+    <Icon name="tabler:mail" class="w-4 h-4" />
+  </button>
+</div>

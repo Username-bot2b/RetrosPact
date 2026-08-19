@@ -1,0 +1,112 @@
+---
+import { Icon } from 'astro-icon/components';
+
+import Image from '~/components/common/Image.astro';
+import PostTags from '~/components/blog/Tags.astro';
+import SocialShare from '~/components/common/SocialShare.astro';
+import RetroWindow from '~/components/ui/RetroWindow.astro';
+import RetroStatusBar from '~/components/ui/RetroStatusBar.astro';
+
+import { getPermalink } from '~/utils/permalinks';
+import { getFormattedDate } from '~/utils/utils';
+
+import type { Post } from '~/types';
+
+export interface Props {
+  post: Post;
+  url: string | URL;
+}
+
+const { post, url } = Astro.props;
+const windowTitle = post.title.length > 48 ? `${post.title.slice(0, 45)}…` : post.title;
+const dateLabel = getFormattedDate(post.publishDate);
+const tagCount = post.tags?.length ?? 0;
+---
+
+<section class="bg-retro py-3 md:py-4">
+  <div class="max-w-5xl mx-auto px-4">
+    <RetroWindow title={windowTitle} icon="filetype-text">
+      <article>
+        <header class="mb-4">
+          <p class="retro-caption mb-2">
+            <Icon name="tabler:clock" class="w-3.5 h-3.5 inline-block -mt-0.5" />
+            <time datetime={String(post.publishDate)}>{dateLabel}</time>
+            {
+              post.author && (
+                <>
+                  {' '}
+                  · <Icon name="tabler:user" class="w-3.5 h-3.5 inline-block -mt-0.5" />
+                  <span>{post.author.replaceAll('-', ' ')}</span>
+                </>
+              )
+            }
+            {
+              post.category && (
+                <>
+                  {' '}
+                  ·{' '}
+                  <a class="hover:underline" href={getPermalink(post.category.slug, 'category')}>
+                    {post.category.title}
+                  </a>
+                </>
+              )
+            }
+            {
+              post.readingTime && (
+                <>
+                  {' '}
+                  · {post.readingTime} min read
+                </>
+              )
+            }
+          </p>
+
+          <h1 class="retro-h1">{post.title}</h1>
+
+          {post.excerpt && <p class="retro-lede mb-3">{post.excerpt}</p>}
+
+          {
+            post.image ? (
+              <div class="retro-inset bg-[var(--retro-base)] mb-4">
+                <Image
+                  src={post.image}
+                  class="w-full max-h-[420px] object-cover block"
+                  widths={[400, 900]}
+                  sizes="(max-width: 900px) 400px, 900px"
+                  alt={post?.excerpt || post.title}
+                  width={900}
+                  height={506}
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            ) : null
+          }
+        </header>
+
+        <div class="retro-prose">
+          <slot />
+        </div>
+
+        <div class="mt-5 pt-3 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 border-t border-[var(--retro-shadow1)]">
+          <PostTags tags={post.tags} title="Tags" />
+          <SocialShare url={url} text={post.title} />
+        </div>
+      </article>
+
+      <RetroStatusBar slot="statusbar" label="Post status">
+        <div class="retro-statusbar__pane retro-statusbar__pane--grow">
+          {post.category ? post.category.title : 'Post'}
+        </div>
+        <div class="retro-statusbar__pane">{dateLabel}</div>
+        {
+          post.readingTime ? (
+            <div class="retro-statusbar__pane">{post.readingTime} min</div>
+          ) : (
+            <div class="retro-statusbar__pane">Tags: {tagCount}</div>
+          )
+        }
+      </RetroStatusBar>
+    </RetroWindow>
+  </div>
+</section>

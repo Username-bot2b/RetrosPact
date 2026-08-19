@@ -1,0 +1,104 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import RetroWindow from '~/components/ui/RetroWindow.astro';
+
+const metadata = {
+  title: 'Contact',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Retro Contact Section -->
+  <section class="bg-retro py-3 md:py-4">
+    <div class="max-w-5xl mx-auto px-4">
+      <RetroWindow title="Contact Us" icon="app-mail">
+        <h1 class="retro-h1">
+          Let's Connect!
+        </h1>
+        <p class="retro-lede">
+          For quicker answers, explore our FAQs section. You may find the solution you're looking for right there! If not, our support team is delighted to help you.
+        </p>
+
+        <!-- Contact Form -->
+        <div class="retro-groupbox mb-4">
+          <span class="retro-groupbox__label">Message</span>
+          <form class="space-y-3">
+            <div>
+              <label for="name" class="retro-label block mb-1">Name</label>
+              <input type="text" name="name" id="name" class="retro-field" />
+            </div>
+
+            <div>
+              <label for="email" class="retro-label block mb-1">Email</label>
+              <input type="email" name="email" id="email" class="retro-field" />
+            </div>
+
+            <div>
+              <label for="message" class="retro-label block mb-1">Message</label>
+              <textarea id="message" name="message" rows="4" class="retro-field"></textarea>
+            </div>
+
+            <div class="flex items-start gap-2">
+              <input id="disclaimer" name="disclaimer" type="checkbox" class="retro-checkbox mt-0.5" />
+              <label for="disclaimer" class="retro-caption">
+                By submitting this contact form, you acknowledge and agree to the collection of your personal information.
+              </label>
+            </div>
+
+            <div class="flex gap-2">
+              <button type="submit" class="btn-retro-primary">
+                Send Message
+              </button>
+            </div>
+
+            <p class="retro-caption m-0">
+              Our support team typically responds within 24 business hours.
+            </p>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="grid md:grid-cols-2 gap-x-4 gap-y-3">
+          <div class="retro-groupbox">
+            <span class="retro-groupbox__label">General Support</span>
+            <p class="retro-text m-0">
+              Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions.
+            </p>
+          </div>
+
+          <div class="retro-groupbox">
+            <span class="retro-groupbox__label">Contact Sales</span>
+            <p class="retro-text m-0">
+              Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.
+            </p>
+          </div>
+
+          <div class="retro-groupbox">
+            <span class="retro-groupbox__label">Technical Support</span>
+            <p class="retro-text m-0">
+              Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors.
+            </p>
+          </div>
+
+          <div class="retro-groupbox">
+            <span class="retro-groupbox__label">Direct</span>
+            <div class="space-y-2 retro-text">
+              <div>
+                <strong class="retro-label block">Phone</strong>
+                <span>+1 (234) 567-890</span>
+              </div>
+              <div>
+                <strong class="retro-label block">Email</strong>
+                <span>contact@support.com</span>
+              </div>
+              <div>
+                <strong class="retro-label block">Location</strong>
+                <span>1234 Lorem Ipsum St, 12345, Miami, EEUU</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </RetroWindow>
+    </div>
+  </section>
+</Layout>

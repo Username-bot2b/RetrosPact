@@ -1,0 +1,139 @@
+---
+export interface TabItem {
+  id: string;
+  label: string;
+}
+
+export interface Props {
+  tabs: TabItem[];
+  /** Initially selected tab id (defaults to first) */
+  initial?: string;
+  class?: string;
+  id?: string;
+  /** Accessible name for the tab list */
+  label?: string;
+}
+
+const { tabs, initial = tabs[0]?.id, class: className = '', id, label = 'Sections' } = Astro.props;
+
+if (!tabs?.length) {
+  throw new Error('RetroTabs requires at least one tab');
+}
+
+const uid = id ?? `retro-tabs-${tabs.map((t) => t.id).join('-')}`;
+const startId = tabs.some((t) => t.id === initial) ? initial : tabs[0].id;
+---
+
+<div
+  class:list={['retro-tabs', className]}
+  data-retro-tabs
+  data-initial={startId}
+  id={uid}
+>
+  <div class="retro-tabs__list" role="tablist" aria-label={label}>
+    {
+      tabs.map((tab) => (
+        <button
+          type="button"
+          class="retro-tabs__tab"
+          role="tab"
+          id={`${uid}__tab-${tab.id}`}
+          aria-controls={`${uid}__panel-${tab.id}`}
+          aria-selected={tab.id === startId ? 'true' : 'false'}
+          tabindex={tab.id === startId ? 0 : -1}
+          data-tab={tab.id}
+        >
+          {tab.label}
+        </button>
+      ))
+    }
+  </div>
+  <div class="retro-tabs__body">
+    {/* Panels: <div data-tab-panel="id">…</div> matching tabs[].id */}
+    <slot />
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    function wire(root) {
+      if (!root || root.dataset.retroTabsReady === '1') return;
+      root.dataset.retroTabsReady = '1';
+
+      const initial = root.getAttribute('data-initial');
+      const uid = root.id;
+      const panels = root.querySelectorAll(':scope > .retro-tabs__body > [data-tab-panel]');
+
+      panels.forEach(function (panel) {
+        const id = panel.getAttribute('data-tab-panel');
+        panel.classList.add('retro-tabs__panel');
+        panel.setAttribute('role', 'tabpanel');
+        panel.id = uid + '__panel-' + id;
+        panel.setAttribute('aria-labelledby', uid + '__tab-' + id);
+      });
+
+      activate(root, initial);
+    }
+
+    function activate(root, tabId) {
+      if (!root || !tabId) return;
+      const tabs = root.querySelectorAll('[role="tab"]');
+      const panels = root.querySelectorAll('[data-tab-panel]');
+
+      tabs.forEach(function (tab) {
+        const on = tab.getAttribute('data-tab') === tabId;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.tabIndex = on ? 0 : -1;
+      });
+
+      panels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute('data-tab-panel') !== tabId;
+      });
+    }
+
+    function initAll() {
+      document.querySelectorAll('[data-retro-tabs]').forEach(wire);
+    }
+
+    if (!window.__retroTabsBound) {
+      window.__retroTabsBound = true;
+
+      document.addEventListener('click', function (e) {
+        const tab = e.target && e.target.closest && e.target.closest('[data-retro-tabs] [role="tab"]');
+        if (!tab) return;
+        const root = tab.closest('[data-retro-tabs]');
+        activate(root, tab.getAttribute('data-tab'));
+        tab.focus();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        const tab = e.target && e.target.closest && e.target.closest('[data-retro-tabs] [role="tab"]');
+        if (!tab) return;
+        const root = tab.closest('[data-retro-tabs]');
+        const tabs = Array.from(root.querySelectorAll('[role="tab"]'));
+        const i = tabs.indexOf(tab);
+        if (i < 0) return;
+
+        var next = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        else return;
+
+        e.preventDefault();
+        activate(root, tabs[next].getAttribute('data-tab'));
+        tabs[next].focus();
+      });
+
+      document.addEventListener('astro:after-swap', function () {
+        document.querySelectorAll('[data-retro-tabs]').forEach(function (root) {
+          delete root.dataset.retroTabsReady;
+        });
+        initAll();
+      });
+    }
+
+    initAll();
+  })();
+</script>

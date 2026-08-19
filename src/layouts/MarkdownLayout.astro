@@ -1,0 +1,30 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import RetroWindow from '~/components/ui/RetroWindow.astro';
+
+import type { MetaData } from '~/types';
+
+export interface Props {
+  frontmatter: {
+    title?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+
+const metadata: MetaData = {
+  title: frontmatter?.title,
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="bg-retro py-3 md:py-4">
+    <div class="max-w-5xl mx-auto px-4">
+      <RetroWindow title={frontmatter.title || 'Document'} icon="app-help">
+        <div class="retro-prose">
+          <slot />
+        </div>
+      </RetroWindow>
+    </div>
+  </section>
+</Layout>

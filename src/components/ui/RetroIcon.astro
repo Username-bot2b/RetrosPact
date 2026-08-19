@@ -1,0 +1,29 @@
+---
+import { serenityIcons, isSerenityIcon, type SerenityIconName } from '~/assets/icons/serenity';
+
+export interface Props {
+  /** Key from `serenityIcons`, e.g. `go-home` */
+  name: SerenityIconName | string;
+  class?: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+}
+
+const { name, class: className = '', alt = '', width = 16, height = 16 } = Astro.props;
+const asset = isSerenityIcon(name) ? serenityIcons[name] : undefined;
+---
+
+{
+  asset ? (
+    <img
+      src={asset.src}
+      width={width}
+      height={height}
+      class:list={['retro-pixel-icon', className]}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+    />
+  ) : null
+}

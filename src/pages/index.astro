@@ -1,0 +1,38 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import RetroWindow from '~/components/ui/RetroWindow.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import { getPermalink, getBlogPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Home',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="bg-retro py-3 md:py-4">
+    <div class="max-w-5xl mx-auto px-4">
+      <RetroWindow title="Home" icon="go-home">
+        <h1 class="retro-h1">Hello — welcome to my site</h1>
+        <p class="retro-lede">
+          A personal space for notes, projects, and whatever I'm learning. Built with Astro and a SerenityOS-inspired UI.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <a href={getBlogPermalink()} class="btn-retro-primary">Read the blog</a>
+          <a href={getPermalink('/about')} class="btn-retro">About me</a>
+          <a href={getPermalink('/contact')} class="btn-retro">Contact</a>
+        </div>
+      </RetroWindow>
+    </div>
+  </section>
+
+  <section class="bg-retro py-3 md:py-4">
+    <div class="max-w-5xl mx-auto px-4">
+      <RetroWindow title="Recent posts" icon="book-open">
+        <h2 class="retro-h2">Latest from the blog</h2>
+        <BlogLatestPosts count={5} linkText="View all posts" />
+      </RetroWindow>
+    </div>
+  </section>
+</Layout>

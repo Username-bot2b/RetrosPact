@@ -1,0 +1,49 @@
+---
+import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+import { blogTagRobots, getStaticPathsBlogTag } from '~/utils/blog';
+
+import Layout from '~/layouts/PageLayout.astro';
+import BlogList from '~/components/blog/List.astro';
+import Headline from '~/components/blog/Headline.astro';
+import Pagination from '~/components/blog/Pagination.astro';
+import RetroWindow from '~/components/ui/RetroWindow.astro';
+import { getBlogPermalink } from '~/utils/permalinks';
+
+export const prerender = true;
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return await getStaticPathsBlogTag({ paginate });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page, tag } = Astro.props as Props;
+
+const currentPage = page.currentPage ?? 1;
+const windowTitle = currentPage > 1 ? `Tag: ${tag.title} — Page ${currentPage}` : `Tag: ${tag.title}`;
+
+const metadata = {
+  title: `Posts by tag '${tag.title}'${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  robots: {
+    index: blogTagRobots?.index,
+    follow: blogTagRobots?.follow,
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="bg-retro py-3 md:py-4">
+    <div class="max-w-5xl mx-auto px-4">
+      <RetroWindow title={windowTitle} icon="filetype-text">
+        <Headline subtitle={`Posts tagged with “${tag.title}”.`}>
+          Tag: {tag.title}
+        </Headline>
+        <BlogList posts={page.data} />
+        <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+        <div class="mt-3">
+          <a href={getBlogPermalink()} class="btn-retro">Back to Blog</a>
+        </div>
+      </RetroWindow>
+    </div>
+  </section>
+</Layout>
