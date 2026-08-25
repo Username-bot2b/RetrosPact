@@ -1,6 +1,6 @@
 site:
   name: RetrosPact
-  site: 'https://example.com'
+  site: 'https://retros-pact.vercel.app'
   base: '/'
   trailingSlash: false
 
