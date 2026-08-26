@@ -54,7 +54,7 @@ Replace sample posts in `src/content/post/` with your own writing.
 
 ## Comments (Giscus)
 
-This template includes an optional comment module on each blog post, powered by [Giscus](https://giscus.app) (GitHub Discussions). Comments are **off by default** so clones do not post into someone else’s repo.
+This template includes an optional comment module on each blog post, powered by [Giscus](https://giscus.app) (GitHub Discussions). The [live demo](https://retros-pact.vercel.app/welcome-to-my-corner) has comments turned on. If you fork this theme, replace the demo `repo` / `repoId` / `categoryId` with your own, or set `enabled: false`.
 
 To enable them:
 

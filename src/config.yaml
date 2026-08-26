@@ -63,14 +63,14 @@ apps:
     isRelatedPostsEnabled: true
     relatedPostsCount: 4
 
-    # Optional Giscus comments on blog posts. Leave enabled: false until you
-    # paste your own IDs from https://giscus.app — do not reuse the demo repo.
+    # Giscus comments for the live demo. Forks should replace repo / repoId /
+    # categoryId with values from https://giscus.app, or set enabled: false.
     comments:
-      enabled: false
-      repo: ''
-      repoId: ''
+      enabled: true
+      repo: 'Username-bot2b/comments-repo'
+      repoId: 'R_kgDONU6VeA'
       category: 'Announcements'
-      categoryId: ''
+      categoryId: 'DIC_kwDONU6VeM4Ckm9E'
       mapping: pathname
       strict: false
       reactionsEnabled: true
