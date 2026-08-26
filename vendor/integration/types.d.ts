@@ -4,6 +4,7 @@ export type {
   MetaDataConfig,
   I18NConfig,
   AppBlogConfig,
+  BlogCommentsConfig,
   AnalyticsConfig,
   UIConfig,
 } from './utils/configBuilder';

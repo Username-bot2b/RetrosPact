@@ -31,11 +31,26 @@ export interface I18NConfig {
   textDirection: string;
   dateFormatter?: Intl.DateTimeFormat;
 }
+export interface BlogCommentsConfig {
+  enabled: boolean;
+  repo: string;
+  repoId: string;
+  category: string;
+  categoryId: string;
+  mapping: string;
+  strict: boolean;
+  reactionsEnabled: boolean;
+  emitMetadata: boolean;
+  inputPosition: string;
+  lang: string;
+}
+
 export interface AppBlogConfig {
   isEnabled: boolean;
   postsPerPage: number;
   isRelatedPostsEnabled: boolean;
   relatedPostsCount: number;
+  comments: BlogCommentsConfig;
   post: {
     isEnabled: boolean;
     permalink: string;
@@ -135,6 +150,19 @@ const getAppBlog = (config: Config) => {
     postsPerPage: 6,
     isRelatedPostsEnabled: false,
     relatedPostsCount: 4,
+    comments: {
+      enabled: false,
+      repo: '',
+      repoId: '',
+      category: 'Announcements',
+      categoryId: '',
+      mapping: 'pathname',
+      strict: false,
+      reactionsEnabled: true,
+      emitMetadata: false,
+      inputPosition: 'top',
+      lang: 'en',
+    },
     post: {
       isEnabled: true,
       permalink: '/blog/%slug%',

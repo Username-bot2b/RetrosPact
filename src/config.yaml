@@ -63,6 +63,21 @@ apps:
     isRelatedPostsEnabled: true
     relatedPostsCount: 4
 
+    # Optional Giscus comments on blog posts. Leave enabled: false until you
+    # paste your own IDs from https://giscus.app — do not reuse the demo repo.
+    comments:
+      enabled: false
+      repo: ''
+      repoId: ''
+      category: 'Announcements'
+      categoryId: ''
+      mapping: pathname
+      strict: false
+      reactionsEnabled: true
+      emitMetadata: false
+      inputPosition: top
+      lang: en
+
 analytics:
   vendors:
     googleAnalytics:
