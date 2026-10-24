@@ -67,10 +67,10 @@ apps:
     # categoryId with values from https://giscus.app, or set enabled: false.
     comments:
       enabled: true
-      repo: 'Username-bot2b/comments-repo'
-      repoId: 'R_kgDONU6VeA'
+      repo: 'Username-bot2b/RetrosPact'
+      repoId: 'R_kgDOT9VZgA'
       category: 'Announcements'
-      categoryId: 'DIC_kwDONU6VeM4Ckm9E'
+      categoryId: 'DIC_kwDOT9VZgM4DJeyX'
       mapping: pathname
       strict: false
       reactionsEnabled: true
