@@ -15,6 +15,8 @@ export type Config = {
 
 export interface SiteConfig {
   name: string;
+  themeName?: string;
+  author?: string;
   site?: string;
   base?: string;
   trailingSlash?: boolean;
@@ -102,6 +104,8 @@ const DEFAULT_SITE_NAME = 'Website';
 const getSite = (config: Config) => {
   const _default = {
     name: DEFAULT_SITE_NAME,
+    themeName: DEFAULT_SITE_NAME,
+    author: '',
     site: undefined,
     base: '/',
     trailingSlash: false,

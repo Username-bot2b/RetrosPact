@@ -24,7 +24,10 @@ const { tags, class: className = '', title = undefined, isCategory = false } = A
             {!APP_BLOG?.tag?.isEnabled ? (
               <span class="btn-retro !min-h-0 !px-2 !py-0.5 !text-[11px]">{tag.title}</span>
             ) : (
-              <a href={getPermalink(tag.slug, isCategory ? 'category' : 'tag')} class="btn-retro !min-h-0 !px-2 !py-0.5 !text-[11px]">
+              <a
+                href={getPermalink(tag.slug, isCategory ? 'category' : 'tag')}
+                class="btn-retro !min-h-0 !px-2 !py-0.5 !text-[11px]"
+              >
                 {tag.title}
               </a>
             )}

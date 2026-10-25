@@ -4,9 +4,5 @@ const { title = await Astro.slots.render('default'), subtitle = await Astro.slot
 
 <header class="mb-4">
   <h1 class="retro-h1" set:html={title} />
-  {
-    subtitle && (
-      <p class="retro-lede mb-0" set:html={subtitle} />
-    )
-  }
+  {subtitle && <p class="retro-lede mb-0" set:html={subtitle} />}
 </header>

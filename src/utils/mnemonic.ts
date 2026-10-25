@@ -25,10 +25,7 @@ export function resolveMnemonic(text: string, preferred?: string, used?: Set<str
   return '';
 }
 
-export function splitMnemonic(
-  text: string,
-  mnemonic: string
-): { before: string; mark: string; after: string } | null {
+export function splitMnemonic(text: string, mnemonic: string): { before: string; mark: string; after: string } | null {
   if (!text || !mnemonic) return null;
   const idx = text.toLowerCase().indexOf(mnemonic.toLowerCase());
   if (idx < 0) return null;

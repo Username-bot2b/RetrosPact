@@ -40,9 +40,7 @@ const metadata = {
   <section class="bg-retro py-3 md:py-4">
     <div class="max-w-5xl mx-auto px-4">
       <RetroWindow title="The Blog" icon="app-text-editor">
-        <Headline subtitle="Notes, tutorials, and other writing from this personal site.">
-          The Blog
-        </Headline>
+        <Headline subtitle="Notes, tutorials, and other writing from this personal site."> The Blog </Headline>
         <BlogList posts={page.data} />
         <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
       </RetroWindow>

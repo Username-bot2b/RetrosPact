@@ -36,8 +36,8 @@ console.log(greeting);
 
 | Feature | Status |
 | ------- | ------ |
-| Windows | Ready |
-| Blog    | Ready |
-| Tags    | Ready |
+| Windows | Ready  |
+| Blog    | Ready  |
+| Tags    | Ready  |
 
 That is enough to verify headings, lists, tables, quotes, and code.

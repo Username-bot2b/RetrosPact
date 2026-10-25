@@ -3,7 +3,12 @@
     <div class="p-4">
       <h1 class="text-xl font-bold mb-4">{{ title }}</h1>
       <ul>
-        <li v-for="(condition, index) in conditionsWithState" :key="index" @click="toggleExplanation(index)" class="mb-2 p-2 border rounded cursor-pointer hover:bg-gray-100">
+        <li
+          v-for="(condition, index) in conditionsWithState"
+          :key="index"
+          @click="toggleExplanation(index)"
+          class="mb-2 p-2 border rounded cursor-pointer hover:bg-gray-100"
+        >
           <p class="font-medium">{{ condition.text }}</p>
           <div v-if="condition.showExplanation" class="mt-2">
             <p class="text-sm text-gray-600">{{ condition.explanation }}</p>
@@ -34,10 +39,10 @@ const props = defineProps<{
 }>();
 
 const conditionsWithState = ref(
-  props.conditions.map(condition => ({
+  props.conditions.map((condition) => ({
     ...condition,
     showExplanation: false,
-    clicked: false
+    clicked: false,
   }))
 );
 

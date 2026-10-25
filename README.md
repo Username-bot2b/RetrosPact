@@ -6,6 +6,11 @@ It is meant for small personal sites: home, about, blog, and contact — not mar
 
 **Live demo:** [https://retros-pact.vercel.app](https://retros-pact.vercel.app)
 
+## Requirements
+
+- [Node.js](https://nodejs.org/) **22.12+**
+- [Astro 7](https://docs.astro.build/en/guides/upgrade-to/v7/) with [Tailwind CSS 4](https://tailwindcss.com/docs/installation/framework-guides/astro) (`@tailwindcss/vite`)
+
 ## Features
 
 - SerenityOS-inspired window chrome (title bars, bevels, menu bar)
@@ -41,6 +46,7 @@ npm run preview
 │   ├── pages/              # Routes (home, about, blog, contact, …)
 │   ├── utils/
 │   ├── config.yaml         # Site name, SEO, blog, comments
+│   ├── content.config.ts   # Content collections (blog posts)
 │   └── navigation.ts       # Header / footer links
 └── package.json
 ```

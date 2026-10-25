@@ -1,5 +1,7 @@
 site:
   name: RetrosPact
+  themeName: RetrosPact
+  author: bot2b
   site: 'https://retros-pact.vercel.app'
   base: '/'
   trailingSlash: false

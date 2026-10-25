@@ -51,14 +51,7 @@ const tagCount = post.tags?.length ?? 0;
                 </>
               )
             }
-            {
-              post.readingTime && (
-                <>
-                  {' '}
-                  · {post.readingTime} min read
-                </>
-              )
-            }
+            {post.readingTime && <> · {post.readingTime} min read</>}
           </p>
 
           <h1 class="retro-h1">{post.title}</h1>
@@ -88,7 +81,9 @@ const tagCount = post.tags?.length ?? 0;
           <slot />
         </div>
 
-        <div class="mt-5 pt-3 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 border-t border-[var(--retro-shadow1)]">
+        <div
+          class="mt-5 pt-3 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 border-t border-[var(--retro-shadow1)]"
+        >
           <PostTags tags={post.tags} title="Tags" />
           <SocialShare url={url} text={post.title} />
         </div>

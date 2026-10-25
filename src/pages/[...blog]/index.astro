@@ -29,9 +29,7 @@ const { post } = Astro.props as Props;
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
-const giscusThemeOrigin = import.meta.env.DEV
-  ? Astro.url.origin
-  : SITE?.site || Astro.site?.href || Astro.url.origin;
+const giscusThemeOrigin = import.meta.env.DEV ? Astro.url.origin : SITE?.site || Astro.site?.href || Astro.url.origin;
 const giscusTheme = new URL('/giscus-serenity.css', giscusThemeOrigin).href;
 
 const metadata = merge(

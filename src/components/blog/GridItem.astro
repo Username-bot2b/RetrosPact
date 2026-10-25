@@ -16,10 +16,22 @@ const image = await findImage(post.image);
 
 <article class="retro-panel">
   <div class="flex gap-2">
-    {image && (
-      <div class="flex-shrink-0 retro-inset self-start bg-[var(--retro-base)]">
-        {link ? (
-          <a href={link}>
+    {
+      image && (
+        <div class="flex-shrink-0 retro-inset self-start bg-[var(--retro-base)]">
+          {link ? (
+            <a href={link}>
+              <Image
+                src={image}
+                class="w-20 h-20 object-cover block"
+                width={80}
+                height={80}
+                alt={post.title}
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          ) : (
             <Image
               src={image}
               class="w-20 h-20 object-cover block"
@@ -29,20 +41,10 @@ const image = await findImage(post.image);
               loading="lazy"
               decoding="async"
             />
-          </a>
-        ) : (
-          <Image
-            src={image}
-            class="w-20 h-20 object-cover block"
-            width={80}
-            height={80}
-            alt={post.title}
-            loading="lazy"
-            decoding="async"
-          />
-        )}
-      </div>
-    )}
+          )}
+        </div>
+      )
+    }
     <div class="flex-1 min-w-0">
       <h3 class="retro-h3">
         {

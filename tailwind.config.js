@@ -12,6 +12,12 @@ export default {
         accent: 'var(--aw-color-accent)',
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
+        page: 'var(--aw-color-text-page)',
+      },
+      backgroundColor: {
+        page: 'var(--aw-color-bg-page)',
+        dark: 'var(--aw-color-bg-page-dark)',
+        light: 'var(--aw-color-bg-page)',
       },
       fontFamily: {
         sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],

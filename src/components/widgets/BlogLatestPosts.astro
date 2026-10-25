@@ -12,11 +12,7 @@ export interface Props {
   count?: number;
 }
 
-const {
-  linkText = 'View all posts',
-  linkUrl = getBlogPermalink(),
-  count = 5,
-} = Astro.props;
+const { linkText = 'View all posts', linkUrl = getBlogPermalink(), count = 5 } = Astro.props;
 
 const posts = APP_BLOG.isEnabled ? await findLatestPosts({ count }) : [];
 ---

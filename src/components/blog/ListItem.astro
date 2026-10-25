@@ -18,10 +18,22 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
 
 <article class="retro-panel">
   <div class="flex gap-3">
-    {image && (
-      <div class="flex-shrink-0 retro-inset bg-[var(--retro-base)]">
-        {link ? (
-          <a href={link}>
+    {
+      image && (
+        <div class="flex-shrink-0 retro-inset bg-[var(--retro-base)]">
+          {link ? (
+            <a href={link}>
+              <Image
+                src={image}
+                class="w-20 h-20 object-cover block"
+                width={80}
+                height={80}
+                alt={post.title}
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          ) : (
             <Image
               src={image}
               class="w-20 h-20 object-cover block"
@@ -31,45 +43,37 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
               loading="lazy"
               decoding="async"
             />
-          </a>
-        ) : (
-          <Image
-            src={image}
-            class="w-20 h-20 object-cover block"
-            width={80}
-            height={80}
-            alt={post.title}
-            loading="lazy"
-            decoding="async"
-          />
-        )}
-      </div>
-    )}
+          )}
+        </div>
+      )
+    }
     <div class="flex-1 min-w-0">
       <header>
         <div class="retro-caption mb-1">
           <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
-          {post.author && (
-            <>
-              {' '} · {post.author.replaceAll('-', ' ')}
-            </>
-          )}
-          {post.category && (
-            <>
-              {' '} · <a class="hover:underline" href={getPermalink(post.category.slug, 'category')}>
-                {post.category.title}
-              </a>
-            </>
-          )}
+          {post.author && <> · {post.author.replaceAll('-', ' ')}</>}
+          {
+            post.category && (
+              <>
+                {' '}
+                ·{' '}
+                <a class="hover:underline" href={getPermalink(post.category.slug, 'category')}>
+                  {post.category.title}
+                </a>
+              </>
+            )
+          }
         </div>
         <h2 class="retro-h3">
-          {link ? (
-            <a class="hover:underline" href={link}>
-              {post.title}
-            </a>
-          ) : (
-            post.title
-          )}
+          {
+            link ? (
+              <a class="hover:underline" href={link}>
+                {post.title}
+              </a>
+            ) : (
+              post.title
+            )
+          }
         </h2>
       </header>
       {post.excerpt && <p class="retro-caption mb-0">{post.excerpt}</p>}

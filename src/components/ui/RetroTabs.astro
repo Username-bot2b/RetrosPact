@@ -24,12 +24,7 @@ const uid = id ?? `retro-tabs-${tabs.map((t) => t.id).join('-')}`;
 const startId = tabs.some((t) => t.id === initial) ? initial : tabs[0].id;
 ---
 
-<div
-  class:list={['retro-tabs', className]}
-  data-retro-tabs
-  data-initial={startId}
-  id={uid}
->
+<div class:list={['retro-tabs', className]} data-retro-tabs data-initial={startId} id={uid}>
   <div class="retro-tabs__list" role="tablist" aria-label={label}>
     {
       tabs.map((tab) => (
@@ -114,7 +109,7 @@ const startId = tabs.some((t) => t.id === initial) ? initial : tabs[0].id;
         const i = tabs.indexOf(tab);
         if (i < 0) return;
 
-        var next = -1;
+        let next = -1;
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % tabs.length;
         else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + tabs.length) % tabs.length;
         else if (e.key === 'Home') next = 0;

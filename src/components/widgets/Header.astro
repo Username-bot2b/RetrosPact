@@ -34,12 +34,7 @@ export interface Props {
   position?: string;
 }
 
-const {
-  id = 'header',
-  links = [],
-  actions = [],
-  isSticky = false,
-} = Astro.props;
+const { id = 'header', links = [], actions = [], isSticky = false } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 const windowTitle = SITE?.name || 'RetrosPact';
@@ -52,10 +47,7 @@ const menuItems = links.map((link) => {
 ---
 
 <header
-  class:list={[
-    'top-0 z-40 flex-none mx-auto w-full',
-    { sticky: isSticky, relative: !isSticky },
-  ]}
+  class:list={['top-0 z-40 flex-none mx-auto w-full', { sticky: isSticky, relative: !isSticky }]}
   {...isSticky ? { 'data-aw-sticky-header': true } : {}}
   {...id ? { id } : {}}
 >
@@ -80,10 +72,12 @@ const menuItems = links.map((link) => {
     </div>
 
     <div class="retro-menubar">
-      {/*
+      {
+        /*
         Single #header nav — BasicScripts toggles `.hidden` for mobile.
         Desktop: horizontal classic menu bar. Mobile (expanded): stacked list.
-      */}
+      */
+      }
       <nav class="hidden md:block min-w-0 flex-1" aria-label="Main navigation">
         {/* Desktop menu bar */}
         <ul class="retro-menubar__menus !hidden md:!flex">
@@ -93,9 +87,7 @@ const menuItems = links.map((link) => {
                 {childLinks?.length ? (
                   <>
                     <button type="button" class="retro-menu-top" accesskey={mnemonic || undefined}>
-                      {icon && isSerenityIcon(icon) && (
-                        <RetroIcon name={icon} class="retro-menu-item__icon" />
-                      )}
+                      {icon && isSerenityIcon(icon) && <RetroIcon name={icon} class="retro-menu-item__icon" />}
                       <span>
                         <MnemonicLabel text={text ?? ''} mnemonic={mnemonic} />
                       </span>
@@ -106,13 +98,8 @@ const menuItems = links.map((link) => {
                     <ul class="retro-dropdown">
                       {childLinks.map(({ text: text2, href: href2, icon: icon2 }) => (
                         <li>
-                          <a
-                            class:list={['retro-menu-item', { 'is-active': href2 === currentPath }]}
-                            href={href2}
-                          >
-                            {icon2 && isSerenityIcon(icon2) && (
-                              <RetroIcon name={icon2} class="retro-menu-item__icon" />
-                            )}
+                          <a class:list={['retro-menu-item', { 'is-active': href2 === currentPath }]} href={href2}>
+                            {icon2 && isSerenityIcon(icon2) && <RetroIcon name={icon2} class="retro-menu-item__icon" />}
                             {text2}
                           </a>
                         </li>
@@ -125,9 +112,7 @@ const menuItems = links.map((link) => {
                     href={href}
                     accesskey={mnemonic || undefined}
                   >
-                    {icon && isSerenityIcon(icon) && (
-                      <RetroIcon name={icon} class="retro-menu-item__icon" />
-                    )}
+                    {icon && isSerenityIcon(icon) && <RetroIcon name={icon} class="retro-menu-item__icon" />}
                     <span>
                       <MnemonicLabel text={text ?? ''} mnemonic={mnemonic} />
                     </span>
@@ -147,10 +132,7 @@ const menuItems = links.map((link) => {
                   <details>
                     <summary class="retro-text">
                       {icon && isSerenityIcon(icon) && (
-                        <RetroIcon
-                          name={icon}
-                          class="retro-menu-item__icon inline-block align-middle mr-1"
-                        />
+                        <RetroIcon name={icon} class="retro-menu-item__icon inline-block align-middle mr-1" />
                       )}
                       {text}
                     </summary>
@@ -164,9 +146,7 @@ const menuItems = links.map((link) => {
                   </details>
                 ) : (
                   <a class="retro-menu-item" href={href}>
-                    {icon && isSerenityIcon(icon) && (
-                      <RetroIcon name={icon} class="retro-menu-item__icon" />
-                    )}
+                    {icon && isSerenityIcon(icon) && <RetroIcon name={icon} class="retro-menu-item__icon" />}
                     {text}
                   </a>
                 )}
